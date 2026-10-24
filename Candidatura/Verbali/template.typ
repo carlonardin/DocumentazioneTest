@@ -14,6 +14,7 @@
 ) = {
   // Impostazioni globali
   set text(lang: "it", font: ("Atkinson Hyperlegible Next", "Liberation Sans"))
+  show strong: set text(weight: 700)
   set page(margin: (x: 2.5cm, y: 2.5cm))
   set heading(numbering: "1.")
   set par(justify: true)
