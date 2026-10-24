@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>Documentazione - DeadlockGuild</title>
     
     <!-- Importazione Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Importazione FontAwesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -19,7 +27,7 @@
             --text-main: #2b3035;
             --text-muted: #6c757d;
             --accent: #c85815; 
-            --nav-bg: rgba(255, 255, 255, 0.95); /* Leggermente trasparente per un bell'effetto scroll */
+            --nav-bg: rgba(255, 255, 255, 0.95);
         }
 
         body {
@@ -29,6 +37,9 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Serve per spingere il footer in basso se c'è poco contenuto */
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -36,39 +47,34 @@
             font-weight: 800;
         }
 
-        /* LOGO INIZIALE (HERO) - Svincolato e Grande */
-        .hero-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 4rem 2rem 2rem 2rem;
-            background-color: var(--bg-main);
-        }
-
-        .hero-logo img {
-            height: 140px; /* Dimensioni generose */
-            max-width: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-logo img:hover {
-            transform: scale(1.02);
-        }
-
-        /* NAVIGAZIONE FISSA (STICKY) */
+        /* NAVIGAZIONE FISSA CON LOGO TESTUALE */
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
             background-color: var(--nav-bg);
-            backdrop-filter: blur(10px); /* Sfoca ciò che ci passa sotto (supportato nei browser moderni) */
-            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            justify-content: space-between; /* Logo a sinistra, link a destra */
+            align-items: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-brand img {
+            height: 50px; /* Logo testuale abbastanza grande */
+            width: auto;
+            transition: transform 0.2s;
+        }
+        
+        .nav-brand img:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
         }
 
         .nav-pill {
@@ -97,7 +103,9 @@
             max-width: 900px;
             margin: 3rem auto;
             padding: 0 1.5rem;
-            min-height: 50vh;
+            flex: 1; /* Fa espandere il contenitore riempiendo lo spazio vuoto prima del footer */
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* SEZIONI */
@@ -107,7 +115,6 @@
             border-radius: 12px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             margin-bottom: 2.5rem;
-            /* Questo serve per non far finire il titolo sotto la navbar quando si clicca un link */
             scroll-margin-top: 100px; 
         }
 
@@ -177,138 +184,30 @@
             border-radius: 4px;
         }
 
-        /* CONTATTI */
-        .info-text {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .info-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s;
-        }
-
-        .info-link:hover {
-            color: #a04510;
-        }
-
-        /* FOOTER STRUTTURATO */
+        /* FOOTER RICCO CON CONTATTI */
         footer {
-            background-color: var(--bg-section);
-            border-top: 1px solid var(--bg-bar);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            background-color: #2b3035; /* Sfondo scuro per dare stacco e importanza */
+            color: #ffffff;
+            padding: 4rem 2rem 3rem 2rem;
+            margin-top: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
             gap: 1.5rem;
         }
 
         .footer-logo {
-            height: 45px; 
+            height: 130px; /* Logo intero in grande */
             width: auto;
-            opacity: 0.85;
-            transition: opacity 0.3s;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
-        .footer-logo:hover {
-            opacity: 1;
-        }
-
-        .footer-text {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-align: center;
+        .footer-description {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            line-height: 1.8;
+            max-width: 600px;
             margin: 0;
         }
-    </style>
-</head>
-<body>
-
-    <!-- Logo Iniziale Gigante (Scompare allo scroll) -->
-    <div class="hero-logo">
-        <img src="assets/logo_nobg.png" alt="DeadlockGuild Logo">
-    </div>
-
-    <!-- Navigazione (Si aggancia in alto allo scroll) -->
-    <nav>
-        <a href="#candidatura" class="nav-pill">Candidatura</a>
-        <a href="#contatti" class="nav-pill">Contatti</a>
-    </nav>
-
-    <div class="container">
-        <!-- SEZIONE CANDIDATURA -->
-        <section id="candidatura">
-            <h1>Candidatura</h1>
-
-            <ul class="doc-list">
-                <li>
-                    <a href="pdf/Candidatura/Documento_1.pdf" class="doc-bar" target="_blank">
-                        Valutazione dei Capitolati <span class="version">v1.0.0</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pdf/Candidatura/Documento_2.pdf" class="doc-bar" target="_blank">
-                        Lettera di Presentazione <span class="version">v1.0.0</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pdf/Candidatura/Documento_3.pdf" class="doc-bar" target="_blank">
-                        Dichiarazione Impegni <span class="version">v1.0.0</span>
-                    </a>
-                </li>
-            </ul>
-
-            <h2>Verbali</h2>
-
-            <h3>Esterni</h3>
-            <ul class="doc-list">
-                <li>
-                    <a href="pdf/Candidatura/Verbali/Esterni/VE_1.pdf" class="doc-bar" target="_blank">
-                        VE_1 - Incontro Proponente <span class="version">24 Ottobre 2026</span>
-                    </a>
-                </li>
-            </ul>
-
-            <h3>Interni</h3>
-            <ul class="doc-list">
-                <li>
-                    <a href="pdf/Candidatura/Verbali/Interni/VI_1.pdf" class="doc-bar" target="_blank">
-                        VI_1 - Setup Iniziale <span class="version">21 Ottobre 2026</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pdf/Candidatura/Verbali/Interni/VI_2.pdf" class="doc-bar" target="_blank">
-                        VI_2 - Scelta Capitolato <span class="version">23 Ottobre 2026</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
-
-        <!-- SEZIONE CONTATTI -->
-        <section id="contatti">
-            <h1>Contatti</h1>
-            <p class="info-text">
-                <strong>Repository Github:</strong> 
-                <a href="https://github.com/carlonardin/DocumentazioneTest" class="info-link" target="_blank">github.com/carlonardin/DocumentazioneTest</a>
-            </p>
-            <p class="info-text">
-                <strong>Email:</strong> 
-                <a href="mailto:deadlockguild.unipd@gmail.com" class="info-link">deadlockguild.unipd@gmail.com</a>
-            </p>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <img src="assets/logo_text_nobg.png" alt="DeadlockGuild" class="footer-logo">
-        <p class="footer-text">
-            © 2026 DeadlockGuild (Gruppo 17).<br>
-            Ingegneria del Software - Università degli Studi di Padova.
-        </p>
-    </footer>
-
-</body>
-</html>
