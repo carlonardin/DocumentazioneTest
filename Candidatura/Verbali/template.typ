@@ -13,7 +13,7 @@
   body
 ) = {
   // Impostazioni globali
-  set text(lang: "it", font: ("AtkinsonHyperlegibleNext", "sans-serif"))
+  set text(lang: "it", font: ("Atkinson Hyperlegible Next", "Liberation Sans"))
   set page(margin: (x: 2.5cm, y: 2.5cm))
   set heading(numbering: "1.")
   set par(justify: true)
