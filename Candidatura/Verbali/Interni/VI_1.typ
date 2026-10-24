@@ -1,5 +1,3 @@
-// doc1.typ
-
 #import "../template.typ": *
 
 #show: verbale.with(

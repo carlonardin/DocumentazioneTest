@@ -12,20 +12,12 @@
   registro_modifiche: (),
   body
 ) = {
-  // Impostazioni globali
-  // Impostazioni globali
-  // 1. Impostiamo il peso base a 400 esplicito
   set text(lang: "it", font: ("Atkinson Hyperlegible Next", "Liberation Sans"), weight: 400)
-  
-  // 2. Forziamo il grassetto chiamando esplicitamente la famiglia e il peso 700
   show strong: set text(font: "Atkinson Hyperlegible Next", weight: 700)
-  
   set page(margin: (x: 2.5cm, y: 2.5cm))
   set heading(numbering: "1.")
   set par(justify: true)
   set list(marker: [•])
-  
-  // 3. Usiamo "bold" o 600 invece della stringa "semibold" che può causare problemi
   show link: it => text(fill: rgb("#c85815"), weight: "bold")[#it]
 
   // Copertina
@@ -70,7 +62,7 @@
 
   pagebreak(weak: true)
 
-  // Header pagine successive
+  // Header Pagine
   set page(
     numbering: "1",
     header: [
@@ -84,7 +76,7 @@
     ],
   )
 
-  // Registro modifiche
+  // Registro Modifiche
   if registro_modifiche.len() > 0 {
     heading([Registro delle modifiche], numbering: none, outlined: false)
     text(
@@ -110,7 +102,7 @@
   body
 }
 
-// Funzione helper per creare la tabella azioni velocemente
+// Tabella Azioni
 #let tabella_azioni(..righe) = {
   table(
     columns: (auto, 1fr, auto, auto),
