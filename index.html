@@ -105,4 +105,210 @@
             background-color: var(--bg-section);
             padding: 2.5rem;
             border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin-bottom: 2.5rem;
+            /* Questo serve per non far finire il titolo sotto la navbar quando si clicca un link */
+            scroll-margin-top: 100px; 
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--bg-main);
+            padding-bottom: 0.8rem;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* BARRE DOCUMENTI */
+        .doc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .doc-list li {
+            margin-bottom: 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .doc-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-main);
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+            border-left: 6px solid var(--accent);
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .doc-bar:hover {
+            background-color: var(--bg-bar-hover);
+            transform: translateX(6px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .version {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: normal;
+            margin-left: auto;
+            font-family: monospace;
+            background-color: var(--bg-section);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* CONTATTI */
+        .info-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .info-link:hover {
+            color: #a04510;
+        }
+
+        /* FOOTER STRUTTURATO */
+        footer {
+            background-color: var(--bg-section);
+            border-top: 1px solid var(--bg-bar);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            height: 45px; 
+            width: auto;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo Iniziale Gigante (Scompare allo scroll) -->
+    <div class="hero-logo">
+        <img src="assets/logo_nobg.png" alt="DeadlockGuild Logo">
+    </div>
+
+    <!-- Navigazione (Si aggancia in alto allo scroll) -->
+    <nav>
+        <a href="#candidatura" class="nav-pill">Candidatura</a>
+        <a href="#contatti" class="nav-pill">Contatti</a>
+    </nav>
+
+    <div class="container">
+        <!-- SEZIONE CANDIDATURA -->
+        <section id="candidatura">
+            <h1>Candidatura</h1>
+
+            <ul class="doc-list">
+                <li>
+                    <a href="pdf/Candidatura/Documento_1.pdf" class="doc-bar" target="_blank">
+                        Valutazione dei Capitolati <span class="version">v1.0.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pdf/Candidatura/Documento_2.pdf" class="doc-bar" target="_blank">
+                        Lettera di Presentazione <span class="version">v1.0.0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pdf/Candidatura/Documento_3.pdf" class="doc-bar" target="_blank">
+                        Dichiarazione Impegni <span class="version">v1.0.0</span>
+                    </a>
+                </li>
+            </ul>
+
+            <h2>Verbali</h2>
+
+            <h3>Esterni</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="pdf/Candidatura/Verbali/Esterni/VE_1.pdf" class="doc-bar" target="_blank">
+                        VE_1 - Incontro Proponente <span class="version">24 Ottobre 2026</span>
+                    </a>
+                </li>
+            </ul>
+
+            <h3>Interni</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="pdf/Candidatura/Verbali/Interni/VI_1.pdf" class="doc-bar" target="_blank">
+                        VI_1 - Setup Iniziale <span class="version">21 Ottobre 2026</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pdf/Candidatura/Verbali/Interni/VI_2.pdf" class="doc-bar" target="_blank">
+                        VI_2 - Scelta Capitolato <span class="version">23 Ottobre 2026</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SEZIONE CONTATTI -->
+        <section id="contatti">
+            <h1>Contatti</h1>
+            <p class="info-text">
+                <strong>Repository Github:</strong> 
+                <a href="https://github.com/carlonardin/DocumentazioneTest" class="info-link" target="_blank">github.com/carlonardin/DocumentazioneTest</a>
+            </p>
+            <p class="info-text">
+                <strong>Email:</strong> 
+                <a href="mailto:deadlockguild.unipd@gmail.com" class="info-link">deadlockguild.unipd@gmail.com</a>
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img src="assets/logo_text_nobg.png" alt="DeadlockGuild" class="footer-logo">
+        <p class="footer-text">
+            © 2026 DeadlockGuild (Gruppo 17).<br>
+            Ingegneria del Software - Università degli Studi di Padova.
+        </p>
+    </footer>
+
+</body>
+</html>
