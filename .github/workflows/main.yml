@@ -22,10 +22,14 @@ jobs:
       - name: Compila Typst in PDF
         run: |
           mkdir -p public
-          cp index.html public/ 2>/dev/null || true
-          cp -r assets public/ 2>/dev/null || true
           
-          # Trova i file .typ escludendo i template e compila mantenendo la struttura
+          # 1. Copia HTML e CSS dalla cartella website alla radice del server
+          cp website/* public/
+          
+          # 2. Copia la cartella assets alla radice del server
+          cp -r assets public/
+          
+          # 3. Trova i file .typ escludendo i template e compila
           find Candidatura -name "*.typ" ! -name "template.typ" -type f | while read -r file; do
             dir_path=$(dirname "$file")
             mkdir -p "public/pdf/$dir_path"
