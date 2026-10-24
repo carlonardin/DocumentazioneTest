@@ -33,6 +33,10 @@ jobs:
           find Candidatura -name "*.typ" ! -name "template.typ" -type f | while read -r file; do
             dir_path=$(dirname "$file")
             mkdir -p "public/pdf/$dir_path"
+
+            # Stampa i font riconosciuti nei log per debug
+            typst fonts --font-path assets/fonts
+
             
             echo "Compilazione di $file..."
             # Usa --font-path per includere i font personalizzati dalla cartella assets/fonts
