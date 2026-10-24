@@ -35,7 +35,7 @@ jobs:
             mkdir -p "public/pdf/$dir_path"
 
             # Stampa i font riconosciuti nei log per debug
-            typst fonts --font-path assets/fonts
+            typst fonts --font-path assets/fonts --variants
 
             
             echo "Compilazione di $file..."
