@@ -23,6 +23,7 @@ jobs:
         run: |
           mkdir -p public
           cp index.html public/ 2>/dev/null || true
+          cp -r assets public/ 2>/dev/null || true
           
           # Trova i file .typ escludendo i template e compila mantenendo la struttura
           find Candidatura -name "*.typ" ! -name "template.typ" -type f | while read -r file; do
