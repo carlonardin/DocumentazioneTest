@@ -13,13 +13,20 @@
   body
 ) = {
   // Impostazioni globali
-  set text(lang: "it", font: ("Atkinson Hyperlegible Next", "Liberation Sans"))
-  show strong: set text(weight: 700)
+  // Impostazioni globali
+  // 1. Impostiamo il peso base a 400 esplicito
+  set text(lang: "it", font: ("Atkinson Hyperlegible Next", "Liberation Sans"), weight: 400)
+  
+  // 2. Forziamo il grassetto chiamando esplicitamente la famiglia e il peso 700
+  show strong: set text(font: "Atkinson Hyperlegible Next", weight: 700)
+  
   set page(margin: (x: 2.5cm, y: 2.5cm))
   set heading(numbering: "1.")
   set par(justify: true)
   set list(marker: [•])
-  show link: it => text(fill: rgb("#c85815"), weight: "semibold")[#it]
+  
+  // 3. Usiamo "bold" o 600 invece della stringa "semibold" che può causare problemi
+  show link: it => text(fill: rgb("#c85815"), weight: "bold")[#it]
 
   // Copertina
   align(center)[
