@@ -1,0 +1,45 @@
+name: Build Typst & Deploy
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+
+      - name: Compila Typst in PDF
+        run: |
+          mkdir -p public
+          cp index.html public/ 2>/dev/null || true
+          
+          # Trova i file .typ escludendo i template e compila mantenendo la struttura
+          find Candidatura -name "*.typ" ! -name "template.typ" -type f | while read -r file; do
+            dir_path=$(dirname "$file")
+            mkdir -p "public/pdf/$dir_path"
+            
+            echo "Compilazione di $file..."
+            typst compile --root . "$file" "public/pdf/${file%.typ}.pdf"
+          done
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'public'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
